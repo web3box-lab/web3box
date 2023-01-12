@@ -1,0 +1,176 @@
+.LoginWallet{
+    // width: 80%;
+    padding-top: 48px;
+    overflow-y:scroll;
+   
+    .ant-modal-content{
+        background-size:100% 100%;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .ant-modal-footer{
+        display: none;
+    }
+    
+    .LoginWallet_c{
+        border-radius: 8px 8px 8px 8px;
+        opacity: 1;
+        p{
+            font-size: 24px;
+            font-weight: 400;
+            color: #000;
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 28px;
+            padding-bottom: 10px;
+        }
+        textarea{
+            height: 192px;
+            margin: 0 auto;
+            display: block;
+            margin-top: 20px;
+            background: #EDF5FE;
+            opacity: 1;
+            border-radius: 16px;
+            border:none;
+            color: #000;
+            resize: none;
+            
+        }
+        .key{
+            display: none;
+        }
+        ul{
+        display: flex;
+        // justify-content:space-between;
+        border-bottom: 1px solid #707070;
+        width: 90%;
+        margin: 0 auto;
+        li{
+            font-size: 20px;
+            font-weight: 400;
+            color: #000;  
+            padding-top: 28px;
+            padding-bottom: 24px;
+            text-align: center;
+            margin-left: 40px;
+            margin-right: 40px;
+            position: relative;
+            cursor: pointer;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            img{
+                width: 100%;
+                position: absolute;
+                bottom: 0px;
+                left:0px;
+                display: none;
+
+            }
+            .active{
+                color: #3F8CFF;
+                display: block;
+            }
+
+            .pointactive{
+                width: 6px;
+                height: 6px;
+                background: #2190A3;
+                opacity: 1;
+                margin-right: 15px;
+            }
+            .point{
+                width: 6px;
+                height: 6px;
+                background: #ccc;
+                opacity: 1;
+                margin-right: 15px;
+            }
+            
+        }
+        }
+        .Confirm_c{
+            display: flex;
+            justify-content: center;
+            padding-bottom: 30px;
+            padding-top: 60px;
+            margin: 0px 40px;
+            .Cancel{
+                width: 400px;
+                height: 48px;
+                border: 1px solid #FE5266;
+                opacity: 1;
+                border-radius: 16px;
+                background: rgba(0,0,0,0);
+                color: #FE5266;
+                margin-right: 10px;
+            }
+            .Confirm{
+                width: 400px;
+                height: 48px;
+                background: #3F8CFF;
+                opacity: 1;
+                border-radius: 16px;
+                color: #fff;
+                border:none;
+                margin-left: 10px;
+                color: #FFFFFF;
+
+            }
+        }
+        .Uploads{
+            width: 90%;
+            height: 60px;
+            opacity: 1;
+            border-radius: 16px;
+            margin: 0 auto;
+            margin-top: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            input{
+            width: 80%;
+            background:#EDF5FE;
+            height: 60px;
+            border:none;
+            color: #000;
+            }
+            .ant-upload-list{
+                display: none !important;
+            }
+            .Upload_B{
+                width: 146px;
+                height: 50px;
+                background: #3F8CFF;
+                opacity: 1;
+                border-radius: 16px;
+                color: #fff;
+                border:none;
+
+            }
+        }
+        ._password{
+            width: 90%;
+            margin: 0 auto;
+            span{
+            font-size: 20px;
+            color: #20304C;
+            display: block;
+            padding: 10px 0;
+            }
+            input{
+                width: 100%;
+                background: #EDF5FE;
+                height: 60px;
+                border:none;
+                border-radius: 16px;
+                color: #000;
+
+            }
+        }
+    }
+    
+}

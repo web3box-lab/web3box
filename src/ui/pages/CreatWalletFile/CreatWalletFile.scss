@@ -1,0 +1,118 @@
+.CreatWalletFile{
+    // width: 80%;
+    max-height: 82vh;
+    overflow-y:scroll;
+    opacity: 1;
+    border-radius: 16px;
+
+    .CreatWallet_c{
+
+        overflow: hidden;
+        p{
+            font-size: 18px;
+            font-weight: 400;
+            color: #FFFFFF;
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 30px;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+        }
+        .SecretPhrase{
+            margin-top: 50px;
+            background: #E9EAEB;
+            background-size: 100% 100%;
+            background-size: 120% 100%;
+            opacity: 1;
+            border-radius: 16px;
+            // margin: 0 auto;
+            // width: 90%;
+            display: flex;
+            justify-content:space-between;
+            ul{
+                // width: 90%;
+                display: flex;
+                justify-content:space-around;
+                flex-wrap: wrap;
+                padding-bottom: 20px;
+                padding-left: 10px;
+                padding-right: 10px;
+
+                li{
+                    width: 16%;
+                    height: 50px;
+                    background:#FFFFFF ;
+                    opacity: 1;
+                    margin-top: 20px;
+                    // line-height: 50px;
+                    color: #FFFFFF;
+                    font-size: 16px;
+                    padding-left: 10px;
+                    span{
+                        float: left;
+                        margin-top: 10px;
+                        color: #000;
+                    }
+                    a{
+                    float: left;
+                    color: #000;
+                    margin-top: 10px;
+                    margin-right: 10px;
+                    }
+                }
+            }
+        }
+        img{
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        input{
+            // width: 90%;
+            height: 50px;
+            margin: 0;
+            display: block;
+            background: rgba(0,0,0,0);
+            border: 1px solid #3CDFDD;
+            opacity: 1;
+            border-radius: 16px;
+            color: #fff;
+            padding-left: 10px;
+        }
+        h6{
+            // width: 90%;
+            margin: 0 auto;
+            font-size: 16px;
+            color: #3CDFDD;
+            padding-top: 16px;
+            padding-bottom: 40px;
+            img{
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+            }
+        }
+        .Confirm_c{
+            display: flex;
+            justify-content: center;
+            padding-bottom: 30px;
+        
+            .Confirm{
+                width: 400px;
+                height: 48px;
+                background: #3F8CFF;
+                opacity: 1;
+                border-radius: 16px;
+                color: #fff;
+                border:none;
+                margin-left: 10px;
+                color: #FFFFFF;
+
+            }
+           
+        }
+    }
+    
+}

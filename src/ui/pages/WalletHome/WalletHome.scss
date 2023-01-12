@@ -1,0 +1,91 @@
+.WalletHome{
+    .refresh{
+        width: 20px !important;height: 20px;margin-left: 5px;cursor: pointer;
+    }
+    .x{
+        display: none;
+    }
+    // padding-top: 20px;
+    // max-height: 82vh;
+    overflow-y:scroll;
+    .LoginWallet_c{
+        // height: 222px;
+        margin: 0 50px;
+        box-shadow: 0px 0px 3px 1px rgba(63,140,255,0.5);
+        border-radius: 15px 15px 15px 15px;
+        opacity: 1;
+        p{
+            font-size: 24px;
+            font-weight: 400;
+            color: #FFFFFF;
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 28px;
+            padding-bottom: 10px;
+        }
+        .key{
+            display: none;
+        }
+
+        .Assets_record{
+            background:#ffffff;
+            border-radius: 16px;
+            padding-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            .Spin_modal{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.4);
+                text-align: center;
+                z-index: 99;
+                padding-top: 80px;
+                .ant-spin-dot{
+                    width: 1.4em;
+                    height: 1.4em;
+                }
+                .ant-spin-dot-item{
+                    background-color: #3CDFDD;
+                    height: 14px;
+                    width: 14px;
+                }
+            }
+            li{
+                overflow: hidden;
+                height: 58px;
+                margin: 0 auto;
+                margin-bottom: 12px;
+                border-bottom: 1px solid #E9F2FF;
+                .tokenHidden{
+                    display: none;
+                }
+                p{
+                     width: 20%; 
+                     padding-top: 15px;
+                    font-size: 16px;
+                    color: #20304C;
+                    float: left;
+                    text-align: center;
+
+                }
+    
+                img{
+                    width: 75px;
+                    // height: 33px;
+                }
+            }
+            .title{
+                background: #EDF5FE;
+                border-radius: 15px 15px 0px 0px;
+                opacity: 1;
+                p{
+                    width: 20%; 
+                    font-size: 20px;
+                        color: #20304C;
+                }
+            }
+        }
+
+    }
+}

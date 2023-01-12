@@ -1,0 +1,50 @@
+
+.ModalDiag{
+    .ant-modal-content{
+        background-size:100% 100%;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .ant-modal-footer{
+        display: none;
+    }
+    p{
+        font-size: 20px;
+        font-weight: 400;
+        color: #AAAAAA;
+        display: flex;
+        justify-content: space-between;
+        a{
+        color: #FFFFFF;
+        font-size: 16px;
+
+        }
+    }
+
+    .btn{
+        width: 100%;
+        margin: 10px 0px;
+        border: none;
+        height: 46px;
+        background: #EDF5FE;
+        border-radius: 9px 9px 9px 9px;
+        opacity: 1;
+        font-size: 20px;
+        color: #3F8CFF;
+        padding:5px 0px;
+        
+    }
+    .foot_span{
+        margin: 20px 0px;
+        display: flex;
+        justify-content:center;
+        height: 20px;
+        font-size: 16px;
+        font-family: Apercu-Medium, Apercu;
+        font-weight: 500;
+        color: #20304C;
+        line-height: 25px;
+    }
+    
+}
