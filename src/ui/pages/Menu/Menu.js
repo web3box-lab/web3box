@@ -7,11 +7,16 @@ import { Button, Menu ,Modal} from 'antd';
 import React, { useState,useEffect } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
 import './Menu.scss';
+import {  Spin  } from 'antd';
 import logo from '../../images/web3box.png';
 import logout_img from '../../images/logout.png';
 import ipfs_img from '../../images/ipfs.png';
+import Loding from '../../images/loding.png';
 import { connect} from 'react-redux';
 import { setAccount, setAddress, setPrivateKey} from '../../store/action';
+import axios from 'axios';
+import { PinataApiKey,PinataSecretApiKe } from '../../../filecoin/constants.js';
+
 
 const SiderMenu = (props) => {
   const {account ,dispatch }=props;
@@ -24,11 +29,13 @@ const SiderMenu = (props) => {
   const Navigate = useNavigate();
   const Location = useLocation();
   const [isModalVisibleLoading, setIsModalVisibleLoading] = useState(false);
+  const [isModalDownloadLoading, setIsModalDownloadLoading] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [activeMenu, setActiveMenu] = useState('');
 
   const handleCancelLoading = () => {
     setIsModalVisibleLoading(false);
+    setIsModalDownloadLoading(false);
   };
 
   const logout = () =>{
@@ -42,6 +49,33 @@ const SiderMenu = (props) => {
   const showLogout = () =>{
     setIsModalVisibleLoading(true)
   }
+
+  const downIPFS = async() =>{
+    setIsModalDownloadLoading(true);
+    var config = {
+      method: 'get',
+      url: 'https://api.pinata.cloud/data/pinList?includesCount=false&metadata[keyvalues][from]={"value":"'+account+'","op":"eq"}',
+      headers: { 
+        'pinata_api_key': PinataApiKey,
+        'pinata_secret_api_key':PinataSecretApiKe,
+      }
+    };
+    const res = await axios(config);
+    setIsModalDownloadLoading(false);
+    funDownload(JSON.stringify(res.data), `${account}.json`);
+    // console.log(JSON.stringify(res.data));
+  }
+
+  const funDownload = (content, filename) => {
+    var eleLink = document.createElement("a");
+    eleLink.download = filename;
+    eleLink.style.display = "none";
+    var blob = new Blob([content]);
+    eleLink.href = URL.createObjectURL(blob);
+    document.body.appendChild(eleLink);
+    eleLink.click();
+    document.body.removeChild(eleLink);
+};
 
   const showLogin = () =>{
     console.log()
@@ -81,7 +115,7 @@ const SiderMenu = (props) => {
       style={{
         width: '300px',
         background: '#FFFFFF',
-        height:'140vh'
+        height:'180vh'
         
       }}
     >
@@ -89,7 +123,7 @@ const SiderMenu = (props) => {
       <Menu className='menu' selectedKeys={[activeMenu]} onClick={MenuRouter} mode="inline" items={items} />
       <div className='line'></div>
 
-      <div className='ipfs'>
+      <div className='ipfs' onClick={downIPFS} >
                 <img className='avatar' src={ipfs_img}></img>
                 <span>IPFS</span>
       </div>
@@ -107,6 +141,13 @@ const SiderMenu = (props) => {
                 <Button onClick={handleCancelLoading} className='Cancel'>Cancel</Button>
                 <Button onClick={logout} className='Confirm'>Confirm</Button>
             </div>
+            </Modal>
+
+
+            <Modal wrapClassName='ModalDiag' title="Download Transaction from ipfs" visible={isModalDownloadLoading} onCancel={handleCancelLoading}>
+                    <div className='downloding'>
+                        <Spin/>
+                    </div>
             </Modal>
 
     </div>

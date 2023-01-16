@@ -13,10 +13,8 @@ import ExtendedKey from './extendedkey.js';
 import { Buffer } from 'buffer';
 import axios from 'axios';
 import toUint8Array from 'base64-to-uint8array'
-
-
 import { getDigest, getCoinTypeFromPath, addressAsBytes, bytesToAddress, tryToPrivateKeyBuffer,getPayloadSECP256K1, getChecksum } from './utils.js';
-import { ProtocolIndicator } from './constants.js';
+import { ProtocolIndicator,PinataApiKey,PinataSecretApiKe } from './constants.js';
 
 // import { Transform } from 'stream';
 // @ts-ignore
@@ -35,6 +33,7 @@ window.Buffer = Buffer;
 // proxy 
 const rpc = "https://filfox.info/rpc/v0";
 const api = "https://filfox.info/api/v1";
+// const pinata = new pinataSDK(PinataApiKey,PinataSecretApiKe);
 
 
 // Randomly generated mnemonic
@@ -136,19 +135,6 @@ export async function tokenPrice(){
 export async function sendSignTransfer(from,to,balance,privateKey){
   const value =  balance * 1000000000000000000 +'';
   const nonce = await GetNonce(from);
-  // let message =  {
-  //   "Version": 0,
-  //   "To":from,
-  //   "From": to,
-  //   "Nonce": nonce * 1,
-  //   "Value": value,
-  //   "GasLimit": 603460,
-  //   "GasFeeCap": '1364744801',
-  //   "GasPremium": '34158613',
-  //   "Method": 0,
-  //   "Params": ""
-  // };
-
   let message =  {
     "Version": 0,
     "To": to,
@@ -178,7 +164,6 @@ export async function sendSignTransfer(from,to,balance,privateKey){
         }
       }
   ];
-  console.log(JSON.stringify(d))
   let r =  await axios.post(rpc,
       d, 
       {
@@ -187,6 +172,15 @@ export async function sendSignTransfer(from,to,balance,privateKey){
           'authority': 'filfox.info'
       }
   })
+
+  try{
+      let cid = JSON.stringify(r.data.result).split(':')[1];
+      cid = cid.slice(1,cid.length - 2);
+      putIPFS(message,from,to,cid,balance);
+  }catch(error){
+    console.log('ipfs error :' + error);
+  }
+ 
   return r.data;
 }
 
@@ -274,6 +268,43 @@ async function GetNonce(address){
 }
 
 
+async function downIPFSByCid(address){
+  
+}
+
+async function putIPFS(body,from,to,cid,balance){
+  var data = JSON.stringify({
+    "pinataOptions": {
+      "cidVersion": 1
+    },
+    "pinataMetadata": {
+      "name": cid.toString(),
+      "keyvalues": {
+        "from": from.toString(),
+        "to": to.toString(),
+        "balance":balance.toString()
+      }
+    },
+    "pinataContent": {
+      "message": body
+    }
+  });
+  
+  var config = {
+    method: 'post',
+    url: 'https://api.pinata.cloud/pinning/pinJSONToIPFS',
+    headers: { 
+      'Content-Type': 'application/json', 
+      'pinata_api_key': PinataApiKey,
+      'pinata_secret_api_key':PinataSecretApiKe,
+    },
+    data : data
+  };
+  
+  const res = await axios(config);
+  
+  console.log(res.data);
+}
 function transactionSign(unsignedMessage, privateKey) {
   if (typeof unsignedMessage !== 'object') {
     throw new Error("'message' need to be an object. Cannot be under CBOR format.")

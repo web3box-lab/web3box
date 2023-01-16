@@ -14,7 +14,7 @@ import File from '../../images/file.png';
 import { Button, Select, message, Input,Modal } from 'antd';
 
 const { Option } = Select;
-
+// 
 
 const UserInfo = (props) => {
     // console.log(knownSubstrate)
@@ -134,6 +134,9 @@ const UserInfo = (props) => {
             sendSignTransfer(account,receiveAddress,tokenAccount,decrypt(privateKey,passwords)).then(res => {
                 setIsLoding(1);
                 getBalance(account);
+
+                //ws ipfs
+
             })
         }catch(error){
             console.log(error);

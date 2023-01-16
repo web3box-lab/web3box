@@ -7,3 +7,7 @@ export const ProtocolIndicator = {
   }
   
   export const MaxSubaddressBytes = 54
+
+  export const  PinataApiKey = '1b5d96182126771c78bb';
+
+  export const  PinataSecretApiKe = 'ff209720f17ca345757cd870788f82a38da3bf3c8dfce906407449e7a3764f87';

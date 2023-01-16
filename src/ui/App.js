@@ -18,6 +18,7 @@ const _WindowWrapper = styled.div`
   width: 100%;
   background:#111315;
   font-size: ${dfstyles.game.fontSize};
+  background:#fff;
 `;
 
 function App() {
