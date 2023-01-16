@@ -85,9 +85,9 @@ const UserInfo = (props) => {
         }
 
         try{
-            gasFree(account,receiveAddress,tokenAccount).then(r =>{
+            gasFree(account,receiveAddress.trim(),tokenAccount).then(r =>{
                 console.log(r.result);
-                setGasfees(r.result.GasLimit);
+                setGasfees( (r.result.GasLimit * 1 * r.result.GasFeeCap * 1 ) / 1000000000000000000);
             })
         }catch(error){
 
@@ -131,7 +131,7 @@ const UserInfo = (props) => {
         setIsLoding(0);
         try{
             //send
-            sendSignTransfer(account,receiveAddress,tokenAccount,decrypt(privateKey,passwords)).then(res => {
+            sendSignTransfer(account,receiveAddress.trim(),tokenAccount,decrypt(privateKey,passwords)).then(res => {
                 setIsLoding(1);
                 getBalance(account);
 
@@ -251,7 +251,7 @@ const UserInfo = (props) => {
 
                 <div  className={selectTab == '2' ? 'show' : 'hide'} >
                                 <div className='_address'>
-                                <Input placeholder="Enter Address" onChange={receiveChange} className='_address_input'></Input>
+                                <Input placeholder="Enter Address" value={receiveAddress} onChange={receiveChange} className='_address_input'></Input>
                                 </div>
                                 <div className='_Amount'>
                                 <Input placeholder="Enter Amount" value={tokenAccount}   onChange={accountChange} ></Input>
@@ -259,7 +259,7 @@ const UserInfo = (props) => {
                                 </div>
                             
                                 <div className='_address'>
-                                <Input type='password'  onChange={passwordChange}   placeholder="Enter Password" className='_address_input'></Input>
+                                <Input type='password' value={passwords}  onChange={passwordChange}   placeholder="Enter Password" className='_address_input'></Input>
                                 </div>
                                 <p className='balance'> Balance: {balances}</p>
                 </div>

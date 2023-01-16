@@ -59,7 +59,7 @@ const WalletHome = (props) => {
                             <p>Time (UTC+0)</p >
                             <p>Amount</p >
                             <p>Method</p >
-                            <p>Statement</p >
+                            <p>Status</p >
                         </li>
                                                         {/* <img src={statu_pending} ></img> */}
                                                         {
@@ -70,7 +70,7 @@ const WalletHome = (props) => {
                         <p>{parseTime(item.timestamp * 1 - 28800)}</p> 
                         <p>{(item.value * 1 / 1000000000000000000).toFixed(4) }</p> 
                         <p className={item.value.slice(0,1) == '-' ? '':'hide'}>Send</p> 
-                        <p className={item.value.slice(0,1) != '-' ? '':'hide'}>Recive</p> 
+                        <p className={item.value.slice(0,1) != '-' ? '':'hide'}>Receive</p> 
                         <p ><img src={statu_success} ></img></p> 
                      </li>
                         })
